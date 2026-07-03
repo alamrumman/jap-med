@@ -210,6 +210,39 @@
   margin: 12px 0;
 }
 
+.page-lead {
+  font-size: 17px;
+  color: var(--heading);
+  line-height: 1.9;
+  margin-bottom: 8px;
+}
+
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 8px;
+  font-size: 15px;
+}
+
+.company-table th,
+.company-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-line);
+}
+
+.company-table th {
+  width: 30%;
+  font-weight: 600;
+  color: var(--heading);
+  white-space: nowrap;
+}
+
+.company-table td {
+  color: var(--body);
+}
+
 /* ---------- Contact ---------- */
 
 .contact-grid {

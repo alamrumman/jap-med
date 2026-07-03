@@ -30,6 +30,7 @@ export default function Footer() {
           <nav className="footer-col" aria-label="サポート">
             <h3>サポート</h3>
             <ul>
+              <li><Link to="/about">私たちについて</Link></li>
               <li><Link to="/contact">お問い合わせ</Link></li>
               <li><a href="/#faq">使用上の注意</a></li>
               <li><a href="/#trust">品質へのこだわり</a></li>

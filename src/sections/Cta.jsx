@@ -9,12 +9,12 @@ export default function Cta() {
     <section id="cta" className="cta" aria-labelledby="cta-title">
       <div className="container reveal" ref={ref}>
         <img
-          src="/medicine.webp"
+          src="/medicine-h.webp"
           alt="リリーバ 総合かぜ薬"
           className="cta-bottle"
           loading="lazy"
-          width="900"
-          height="1125"
+          width="1100"
+          height="550"
         />
         <h2 id="cta-title">そろそろ、楽になりませんか。</h2>
         <p>
