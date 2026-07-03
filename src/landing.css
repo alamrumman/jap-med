@@ -1,0 +1,861 @@
+/* ---------- Hero ---------- */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 60px;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr 0.7fr;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-copy .kicker {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--brand);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.hero-sub {
+  margin-top: 24px;
+  font-size: 16px;
+  max-width: 420px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.hero-bottle-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-bottle {
+  width: min(380px, 80%);
+  will-change: transform;
+}
+
+.bottle-float {
+  animation: bottleFloat 7s ease-in-out infinite;
+}
+
+@keyframes bottleFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(0.8deg);
+  }
+}
+
+.hero-pedestal {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(17, 17, 17, 0.08),
+    transparent 70%
+  );
+}
+
+.symptom-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-card);
+  border-radius: 999px;
+  padding: 12px 22px 12px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--heading);
+  box-shadow: var(--shadow-card);
+  width: fit-content;
+}
+
+.chip-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  display: grid;
+  place-items: center;
+  color: var(--brand);
+  flex: none;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- Product theater (pinned bottle + chapters) ---------- */
+
+.theater {
+  position: relative;
+}
+
+.theater-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.theater-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage-bottle-wrap {
+  position: relative;
+  width: min(340px, 70%);
+  will-change: transform;
+}
+
+.stage-bottle {
+  position: relative;
+  z-index: 2;
+}
+
+.stage-glow {
+  position: absolute;
+  inset: -12%;
+  z-index: 1;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.8s ease, background 0.8s ease;
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.theater[data-chapter="cold"] .stage-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(59, 130, 246, 0.18),
+    transparent 65%
+  );
+  opacity: 1;
+}
+
+.theater[data-chapter="headache"] .stage-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(245, 158, 11, 0.16),
+    transparent 65%
+  );
+  opacity: 1;
+}
+
+.theater[data-chapter="pain"] .stage-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(217, 119, 6, 0.16),
+    transparent 65%
+  );
+  opacity: 1;
+}
+
+.theater[data-chapter="fever"] .stage-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(239, 68, 68, 0.15),
+    transparent 65%
+  );
+  opacity: 1;
+}
+
+.theater[data-chapter="allergy"] .stage-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(34, 197, 94, 0.15),
+    transparent 65%
+  );
+  opacity: 1;
+}
+
+.chapters {
+  display: flex;
+  flex-direction: column;
+}
+
+.chapter {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.chapter-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+}
+
+.chapter h3 {
+  font-size: clamp(26px, 3.2vw, 36px);
+  margin-bottom: 16px;
+}
+
+.chapter > p {
+  max-width: 440px;
+}
+
+.chapter-points {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chapter-points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--heading);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.chapter.in-view .chapter-points li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter.in-view .chapter-points li:nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.chapter.in-view .chapter-points li:nth-child(3) {
+  transition-delay: 0.24s;
+}
+
+.chapter.in-view .chapter-points li:nth-child(4) {
+  transition-delay: 0.36s;
+}
+
+.point-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* ---------- Relief map (human figure) ---------- */
+
+.relief {
+  padding: 120px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+}
+
+.relief-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-top: 56px;
+}
+
+.relief-figure img {
+  width: min(440px, 100%);
+  margin: 0 auto;
+}
+
+.relief-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.relief-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--bg);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 20px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.relief-card:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-card);
+  border-color: var(--border-btn);
+}
+
+.relief-card h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.relief-card p {
+  font-size: 14px;
+}
+
+/* ---------- How it works ---------- */
+
+.how {
+  padding: 120px 0;
+}
+
+.how-figure {
+  margin-top: 56px;
+}
+
+.how-figure img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.how-step {
+  text-align: center;
+}
+
+.how-step .step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--heading);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+}
+
+.how-step h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.how-step p {
+  font-size: 13px;
+}
+
+/* ---------- Benefits ---------- */
+
+.benefits {
+  padding: 120px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+}
+
+.benefit-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin-top: 56px;
+}
+
+.benefit {
+  text-align: center;
+  padding: 0 18px;
+  border-left: 1px solid var(--border-line);
+}
+
+.benefit:first-child {
+  border-left: none;
+}
+
+.benefit-icon {
+  color: var(--heading);
+  margin-bottom: 14px;
+  display: inline-flex;
+}
+
+.benefit h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 960px) {
+  .benefit-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 0;
+  }
+
+  .benefit:nth-child(4) {
+    border-left: none;
+  }
+}
+
+/* ---------- Ingredients ---------- */
+
+.ingredients {
+  padding: 120px 0;
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-top: 56px;
+}
+
+.ingredients-figure img {
+}
+
+.ingredient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ingredient-card {
+  background: var(--surface);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 22px 26px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.ingredient-card:hover {
+  transform: scale(1.02);
+  background: #fcfcfb;
+  box-shadow: var(--shadow-card);
+  border-color: var(--border-btn);
+}
+
+.ingredient-card h3 {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ingredient-card h3::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand);
+  flex: none;
+}
+
+.ingredient-card .role {
+  font-size: 13px;
+  color: var(--brand);
+  font-weight: 600;
+  margin: 4px 0 8px 18px;
+}
+
+.ingredient-card p {
+  font-size: 14px;
+  margin-left: 18px;
+}
+
+/* ---------- Trust ---------- */
+
+.trust {
+  padding: 120px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  margin-top: 56px;
+  align-items: center;
+}
+
+.doctor-quote {
+  background: var(--bg);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: var(--shadow-card);
+}
+
+.doctor-quote blockquote {
+  margin: 0;
+  font-size: 17px;
+  color: var(--heading);
+  line-height: 2;
+}
+
+.doctor-quote figcaption {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.doctor-quote figcaption strong {
+  display: block;
+  color: var(--heading);
+  font-size: 15px;
+}
+
+.trust-points {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.trust-point {
+  display: flex;
+  gap: 16px;
+}
+
+.trust-point .tp-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border-card);
+  display: grid;
+  place-items: center;
+  color: var(--brand);
+  flex: none;
+}
+
+.trust-point h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.trust-point p {
+  font-size: 14px;
+}
+
+/* ---------- Testimonials ---------- */
+
+.testimonials {
+  padding: 120px 0;
+}
+
+.testimonial-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.testimonial {
+  background: var(--surface);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: var(--shadow-card);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.testimonial.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.testimonial:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.stars {
+  color: var(--brand);
+  letter-spacing: 3px;
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.testimonial p {
+  font-size: 15px;
+  color: var(--heading);
+}
+
+.testimonial .who {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.testimonial .who strong {
+  color: var(--heading);
+  display: block;
+  font-size: 14px;
+}
+
+/* ---------- Stats ---------- */
+
+.stats {
+  padding: 96px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value .unit {
+  font-size: 0.5em;
+  margin-left: 2px;
+  color: var(--brand);
+}
+
+.stat-label {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- FAQ ---------- */
+
+.faq {
+  padding: 120px 0;
+}
+
+.faq .container {
+  max-width: 800px;
+}
+
+.faq-list {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary .faq-plus {
+  flex: none;
+  color: var(--muted);
+  transition: transform 0.25s ease;
+}
+
+.faq-item[open] summary .faq-plus {
+  transform: rotate(45deg);
+}
+
+.faq-item .faq-body {
+  padding: 0 26px 22px;
+  font-size: 15px;
+}
+
+/* ---------- CTA ---------- */
+
+.cta {
+  padding: 140px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-bottle {
+  width: min(420px, 76%);
+  margin: 0 auto 48px;
+}
+
+.cta h2 {
+  font-size: clamp(30px, 4.5vw, 46px);
+}
+
+.cta p {
+  margin: 18px auto 0;
+  max-width: 480px;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Reveal on scroll ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+  .hero {
+    padding-top: 100px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 48px;
+  }
+
+  .hero-copy .kicker {
+    justify-content: center;
+  }
+
+  .hero-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .symptom-chips {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .theater-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theater-stage {
+    height: 46vh;
+    top: 0;
+    background: linear-gradient(var(--bg) 82%, transparent);
+    z-index: 5;
+  }
+
+  .stage-bottle-wrap {
+    width: min(180px, 40%);
+  }
+
+  .chapter {
+    min-height: 72vh;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+  }
+
+  .relief-grid,
+  .ingredients-grid,
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+
+  .testimonial-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 16px;
+  }
+}
