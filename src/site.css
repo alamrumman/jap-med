@@ -17,10 +17,6 @@
   box-shadow: 0 1px 0 var(--border-line);
 }
 
-.site-header.hidden {
-  transform: translateY(-100%);
-}
-
 .header-inner {
   display: flex;
   align-items: center;

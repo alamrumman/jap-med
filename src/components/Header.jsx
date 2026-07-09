@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useRouter } from '../router.jsx'
 import { LogoMark, MenuIcon } from './Icons.jsx'
 
@@ -12,9 +12,7 @@ const NAV = [
 export default function Header() {
   const { path, navigate } = useRouter()
   const [solid, setSolid] = useState(false)
-  const [hidden, setHidden] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const lastY = useRef(0)
 
   useEffect(() => {
     let ticking = false
@@ -25,8 +23,6 @@ export default function Header() {
       requestAnimationFrame(() => {
         const y = window.scrollY
         setSolid(y > 24)
-        setHidden(y > 160 && y > lastY.current)
-        lastY.current = y
         ticking = false
       })
     }
@@ -49,7 +45,7 @@ export default function Header() {
   }
 
   return (
-    <header className={`site-header ${solid ? 'solid' : ''} ${hidden && !menuOpen ? 'hidden' : ''}`}>
+    <header className={`site-header ${solid ? 'solid' : ''}`}>
       <div className="container header-inner">
         <Link to="/" className="logo" aria-label="リリーバ ホーム">
           <LogoMark />
